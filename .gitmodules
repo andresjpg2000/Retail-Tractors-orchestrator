@@ -1,0 +1,15 @@
+[submodule "services/users"]
+	path = services/users
+	url = https://github.com/Retail-Tractors/users-service
+[submodule "services/payments"]
+	path = services/payments
+	url = https://github.com/Retail-Tractors/payments-service
+[submodule "services/bookings"]
+	path = services/bookings
+	url = https://github.com/Retail-Tractors/bookings-service
+[submodule "services/inventory"]
+	path = services/inventory
+	url = https://github.com/Retail-Tractors/inventory-service
+[submodule "services/emails"]
+	path = services/emails
+	url = https://github.com/Retail-Tractors/email-service
