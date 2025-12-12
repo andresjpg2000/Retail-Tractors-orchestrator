@@ -13,3 +13,6 @@
 [submodule "services/emails"]
 	path = services/emails
 	url = https://github.com/Retail-Tractors/email-service
+[submodule "services/reviews"]
+	path = services/reviews
+	url = https://github.com/Retail-Tractors/reviews-service
