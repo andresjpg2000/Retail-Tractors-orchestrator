@@ -15,7 +15,7 @@ services:
       - retail-network
 
   users-service:
-    build: 
+    build:
       context: ./services/users
       dockerfile: Dockerfile
     env_file:
@@ -27,7 +27,7 @@ services:
       - retail-network
 
   inventory-service:
-    build: 
+    build:
       context: ./services/inventory
       dockerfile: Dockerfile
     env_file:
@@ -39,7 +39,7 @@ services:
       - retail-network
 
   bookings-service:
-    build: 
+    build:
       context: ./services/bookings
       dockerfile: Dockerfile
     env_file:
@@ -57,6 +57,26 @@ services:
     environment:
       - SPRING_PROFILES_ACTIVE=dev
       - SPRING_CONFIG_LOCATION=/config/
+    networks:
+      - retail-network
+
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"     # AMQP
+      - "15672:15672"   # Management UI
+    networks:
+      - retail-network
+
+  email-service:
+    build:
+      context: ./services/emails
+      dockerfile: Dockerfile
+    env_file:
+      - ./services/emails/.env
+    depends_on:
+      - rabbitmq
     networks:
       - retail-network
 
