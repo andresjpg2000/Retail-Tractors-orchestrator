@@ -75,6 +75,26 @@ services:
       - SPRING_CONFIG_LOCATION=/config/
     networks:
       - retail-network
+      
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"     # AMQP
+      - "15672:15672"   # Management UI
+    networks:
+      - retail-network
+
+  email-service:
+    build:
+      context: ./services/emails
+      dockerfile: Dockerfile
+    env_file:
+      - ./services/emails/.env
+    depends_on:
+      - rabbitmq
+    networks:
+      - retail-network
 
 networks:
   retail-network:
